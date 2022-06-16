@@ -1,0 +1,13 @@
+{
+  "name": "m2ts-util",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "aribts": "^2.1.12",
+    "cli-progress": "^3.11.1"
+  }
+}
