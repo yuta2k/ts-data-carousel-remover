@@ -7,7 +7,7 @@ export default class TsOmitPidPacketSelector extends TsBase {
     super();
 
     if (!Array.isArray(omitPids)) {
-      throw new Error("omitPids must be an array");
+      throw new Error('omitPids must be an array');
     }
 
     this.updateOmitPids(omitPids);
