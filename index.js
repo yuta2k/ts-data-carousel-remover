@@ -93,7 +93,12 @@ if (!fs.existsSync(srcFilePath)) {
     });
   });
 
+  if (targetPidsSet.size) {
   const targetPidsHexStrs = Array.from(targetPidsSet)
     .map((pidNum) => '0x' + ('0000' + pidNum.toString(16)).slice(-4));
-  console.log('Omitted PID(s): ' + targetPidsHexStrs.join(', '))
+    console.log('Omitted PID(s): ' + targetPidsHexStrs.join(', '));
+  } else {
+    console.log('Not found data carousel packets.')
+    console.log('But wrote destination file.')
+  }
 })();
