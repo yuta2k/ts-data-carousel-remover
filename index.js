@@ -86,7 +86,13 @@ if (!fs.existsSync(srcFilePath)) {
   tsPacketSelector.pipe(tsPacketConverter);
   tsPacketConverter.pipe(tsWritableConnector);
 
-  // wait process done
+  // Register handler for press Ctrl + C
+  process.on('SIGINT', function () {
+    readStream.close();
+    console.log('Aborted');
+  });
+
+  // wait process dones
   await new Promise((resolve) => {
     tsWritableConnector.on('end', () => {
       resolve();
@@ -94,8 +100,8 @@ if (!fs.existsSync(srcFilePath)) {
   });
 
   if (targetPidsSet.size) {
-  const targetPidsHexStrs = Array.from(targetPidsSet)
-    .map((pidNum) => '0x' + ('0000' + pidNum.toString(16)).slice(-4));
+    const targetPidsHexStrs = Array.from(targetPidsSet)
+      .map((pidNum) => '0x' + ('0000' + pidNum.toString(16)).slice(-4));
     console.log('Omitted PID(s): ' + targetPidsHexStrs.join(', '));
   } else {
     console.log('Not found data carousel packets.')
