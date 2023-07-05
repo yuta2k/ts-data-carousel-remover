@@ -38,22 +38,22 @@ if (!fs.existsSync(srcFilePath)) {
 
   console.log('Starting...');
 
-  const readableStream = fs.createReadStream(srcFilePath);
-  const writableStream = fs.createWriteStream(outFilePath);
+  const readStream = fs.createReadStream(srcFilePath);
+  const writeStream = fs.createWriteStream(outFilePath);
 
   const targetPidsSet = new Set(firstDiscoveredPids);
   let prevTargetPidsSetLength = targetPidsSet.length;
 
   // initialize file read
   const transformStream = createProgressTransformStream(srcFilePath);
-  readableStream.pipe(transformStream);
+  readStream.pipe(transformStream);
 
   const tsReadableConnector = new TsReadableConnector();
   transformStream.pipe(tsReadableConnector);
 
   // initialize file write
   const tsWritableConnector = new TsWritableConnector();
-  tsWritableConnector.pipe(writableStream);
+  tsWritableConnector.pipe(writeStream);
 
   // initialize ts packet processing
   const tsPacketParser = new TsPacketParser();
