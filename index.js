@@ -15,7 +15,7 @@ const DATA_CAROUSEL_STREAM_TYPE = 0x0D;
 
 
 if (process.argv.length < 3) {
-  console.error('Usage: yarn start /path/to/infile.m2ts [/path/to/outfile.m2ts]');
+  console.error('Usage: npm run start /path/to/infile.m2ts [/path/to/outfile.m2ts]');
   process.exit(1);
 }
 
