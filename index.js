@@ -27,7 +27,7 @@ if (!fs.existsSync(srcFilePath)) {
   process.exit(1);
 }
 
-(async() => {
+(async () => {
   console.log('Searching target PIDs from first PMT packet...');
 
   // stream で PMT を読む場合、データカルーセルのパケットが先にあると完全に排除できないため
@@ -104,7 +104,7 @@ if (!fs.existsSync(srcFilePath)) {
       .map((pidNum) => '0x' + ('0000' + pidNum.toString(16)).slice(-4));
     console.log('Omitted PID(s): ' + targetPidsHexStrs.join(', '));
   } else {
-    console.log('Not found data carousel packets.')
-    console.log('But wrote destination file.')
+    console.log('Not found data carousel packets.');
+    console.log('But wrote destination file.');
   }
 })();
