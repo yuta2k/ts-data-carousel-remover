@@ -8,7 +8,7 @@ git clone 後 `npm install` を実行
 
 ## 使用方法
 ```
-npm start /path/to/infile.m2ts [/path/to/outfile.m2ts]
+npm run start /path/to/infile.m2ts [/path/to/outfile.m2ts]
 ```
 出力ファイル名を省略すると `入力ファイル名.out.m2ts` の名前で出力されます
 
